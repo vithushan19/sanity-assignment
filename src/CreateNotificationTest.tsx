@@ -1,25 +1,32 @@
 import { Button, Heading, Stack, TextInput } from "@sanity/ui";
-import { mockHttpClient as notificationsClient } from "./datastore/mockHttpClient";
+import { getNotificationsClient } from "./datastore/notificationsClient";
 import { v4 as uuid } from "uuid";
 import { FormEvent, useRef } from "react";
 
 const range = new Array(5).fill(0);
+const notificationsClient = getNotificationsClient();
 
 export function CreateNotificationTest() {
-  const textRef = useRef<HTMLInputElement | null>(null);
+  // const textRef = useRef<HTMLInputElement | null>(null);
   function onAddText(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const elements = event.currentTarget.elements;
+
     range.forEach((_, i) => {
       const element = elements.namedItem(`text-${i}`);
       if (element instanceof HTMLInputElement && element.value) {
-        notificationsClient.create({
-          id: uuid(),
-          message: element.value,
-        });
         element.value = "";
       }
     });
+
+    notificationsClient.createAll(
+      range.map((element) => {
+        return {
+          id: uuid(),
+          message: element.value,
+        };
+      })
+    );
   }
   return (
     <form onSubmit={onAddText}>
@@ -30,7 +37,7 @@ export function CreateNotificationTest() {
             <TextInput
               name={`text-${i}`}
               type="text"
-              ref={textRef}
+              // ref={textRef}
               placeholder={`Notification #${i}`}
             />
           </label>
