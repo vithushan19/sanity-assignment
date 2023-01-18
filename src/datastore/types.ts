@@ -9,8 +9,7 @@ export type Listener = () => void;
 export interface NotificationsHTTPClient {
   fetchNotifications: () => Promise<Notification[]>;
   listenNotifications: (listener: () => void) => () => void;
-  create: (
-    notification: Omit<Notification, "createdAt"> & { createdAt?: string }
-  ) => Promise<void>;
-  delete: (notificationId: string) => void;
+  create: (notification: Omit<Notification, "createdAt">) => Promise<void>;
+  createAll: (notification: Omit<Notification, "createdAt">[]) => Promise<void>;
+  delete: (notificationId: string) => Promise<void>;
 }
