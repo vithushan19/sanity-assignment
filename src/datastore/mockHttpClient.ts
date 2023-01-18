@@ -44,10 +44,6 @@ export const mockHttpClient: NotificationsHTTPClient = {
   async delete(notificationId: string) {
     await simulateRandomDelay(50, 500);
 
-    // const index = notifications.findIndex(
-    //   (notification) => notification.id === notificationId
-    // );
-    // notifications.splice(index, 1);
     // TODO read https://stackoverflow.com/questions/41420333/why-splice-not-working-correctly-in-react
     // You're state is not being updated correctly because you're using the splice method which is mutating your "database"
     // You should be creating a new copy of the array instead of mutating the original

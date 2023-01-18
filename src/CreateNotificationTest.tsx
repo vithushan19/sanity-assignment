@@ -7,7 +7,6 @@ const range = new Array(5).fill(0);
 const notificationsClient = getNotificationsClient();
 
 export function CreateNotificationTest() {
-  // const textRef = useRef<HTMLInputElement | null>(null);
   function onAddText(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const elements = event.currentTarget.elements;
@@ -37,7 +36,6 @@ export function CreateNotificationTest() {
             <TextInput
               name={`text-${i}`}
               type="text"
-              // ref={textRef}
               placeholder={`Notification #${i}`}
             />
           </label>

@@ -2,7 +2,7 @@ import { NotificationsHTTPClient, Notification } from "./types";
 
 export const httpClient: NotificationsHTTPClient = {
   fetchNotifications: function (): Promise<Notification[]> {
-    return Promise.resolve([]);
+    throw new Error("Function not implemented.");
   },
   listenNotifications: function (listener: () => void): () => void {
     throw new Error("Function not implemented.");
@@ -12,7 +12,7 @@ export const httpClient: NotificationsHTTPClient = {
       createdAt?: string | undefined;
     }
   ): Promise<void> {
-    return Promise.resolve();
+    throw new Error("Function not implemented.");
   },
   delete: function (notificationId: string): Promise<void> {
     throw new Error("Function not implemented.");

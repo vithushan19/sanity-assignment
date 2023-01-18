@@ -18,10 +18,6 @@ export function NotificationButton() {
     });
   }, []);
 
-  function handleDelete(notificationId: string) {
-    notificationsClient.delete(notificationId);
-  }
-
   function onShowPopover() {
     setPopoverOpen(!popoverOpen);
   }
@@ -40,7 +36,7 @@ export function NotificationButton() {
                   fontSize={1}
                   mode="bleed"
                   icon={CloseIcon}
-                  onClick={() => handleDelete(notification.id)}
+                  onClick={() => notificationsClient.delete(notification.id)}
                 />
               </Flex>
             </Card>
